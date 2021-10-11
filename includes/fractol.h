@@ -6,6 +6,9 @@
 # include "../libft/libft.h"
 # include "../mlx_linux/mlx.h"
 
+# define JULIA 1
+# define MANDELBROT 2
+
 typedef struct		s_reso
 {
 	int		x;
@@ -26,6 +29,8 @@ typedef struct		s_fractol
 {
 	t_mlx		*mlx;
 	t_reso		*res;
+	int			type;
+	int			coef;
 }			t_fractol;
 
 //MLX
@@ -38,5 +43,10 @@ int		launch_program(t_fractol *fractol);
 
 //ERROR
 int		print_error(char *str, int code);
+
+//UTILS
+int		ft_strcmp(char *s1, char *s2);
+int		ft_strcmp_type(char *s1, char *s2);
+int		ft_strlen(char *str);
 
 #endif
