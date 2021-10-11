@@ -13,7 +13,8 @@ SRC = srcs/main.c \
 		srcs/mlx.c \
 		srcs/launch.c \
 		srcs/error.c \
-		srcs/utils.c
+		srcs/utils.c \
+		srcs/draw.c
 
 OBJ = $(SRC:%.c=%.o)
 

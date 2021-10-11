@@ -15,7 +15,11 @@ int		ft_parsing(int ac, char **av)
 int		main(int ac, char **av)
 {
 	t_fractol	*fractol;
+	int		tmp;
+	int		i;
 
+	tmp = 0;
+	i = 0;
 	if (ft_parsing(ac, av) == 1)
 		return (1);
 	fractol = (t_fractol*)malloc(sizeof(t_fractol));
@@ -25,7 +29,19 @@ int		main(int ac, char **av)
 		fractol->type = JULIA;
 	if (ft_strcmp_type(av[1], "mandelbrot") == 0)
 		fractol->type = MANDELBROT;
-	printf("fractol->type = %d", fractol->type);
+	fractol->coef.x = COEF_A;
+	fractol->coef.y = COEF_B;
+	if (ft_strcmp_type(av[1], "julia") == 0 && ac == 3)
+	{
+		tmp = ft_atoi(av[2]);
+		while (i < tmp)
+		{
+			fractol->coef.x += tmp * 0.05;
+			fractol->coef.y += tmp * 0.05;
+			i++;
+		}
+	}
+	fractol->zoom = 1.0;
 	if (launch_program(fractol))
 		return (print_error("an error has occured when runnig the program\n"));
 

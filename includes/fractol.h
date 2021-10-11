@@ -3,12 +3,14 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <math.h>
 # include "../mlx_linux/mlx.h"
 
-# define COEF_A 0.285
-# define COEF_B 0.013
+# define COEF_A -0.038088
+# define COEF_B 0.9754633
 # define JULIA 1
 # define MANDELBROT 2
+# define MAX_ITERATION 256
 
 typedef struct		s_xy
 {
@@ -43,8 +45,10 @@ typedef struct		s_fractol
 {
 	t_mlx		*mlx;
 	t_reso		*res;
-	int			type;
-	int			coef;
+	int		type;
+	t_d_xy		coef;
+	int		color;
+	double		zoom;
 }			t_fractol;
 
 //MLX
@@ -66,6 +70,7 @@ int		ft_atoi(char *str);
 
 //EXIT
 
-
+//DRAW
+void		draw_fractal(t_fractol *fractol);
 
 #endif
