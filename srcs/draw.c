@@ -1,17 +1,38 @@
 #include "fractol.h"
 
-int	iterate_julia(t_d_xy *c, t_d_xy d_pos)
+int	iterate_julia(t_d_xy c, t_d_xy d_pos)
 {
 	int	i;
 	t_d_xy	d_tmp;
 
 	i = 0;
-	while (sqrt(c->x * c->x + c->y * c->y) <= 2 && i < MAX_ITERATION)
+	while (sqrt(c.x * c.x + c.y * c.y) <= 2 && i < MAX_ITERATION)
 	{
-		d_tmp.x = c->x;
-		d_tmp.y = c->y;
-		c->x = d_tmp.x * d_tmp.x - d_tmp.y * d_tmp.y + d_pos.x;
-		c->y = 2 * d_tmp.x * d_tmp.y + d_pos.y;
+		d_tmp.x = c.x;
+		d_tmp.y = c.y;
+		c.x = d_tmp.x * d_tmp.x - d_tmp.y * d_tmp.y + d_pos.x;
+		c.y = 2 * d_tmp.x * d_tmp.y + d_pos.y;
+		i++;
+	}
+	return (i);
+}
+
+int	iterate_mandelbrot(t_d_xy c)
+{
+	int	i;
+	t_d_xy	d_tmp;
+	t_d_xy	p;
+
+	i = 0;
+	p = c;
+	c.x = 0;
+	c.y = 0;
+	while (sqrt(c.x * c.x + c.y * c.y) <= 2 && i < MAX_ITERATION)
+	{
+		d_tmp.x = c.x;
+		d_tmp.y = c.y;
+		c.x = d_tmp.x * d_tmp.x - d_tmp.y * d_tmp.y + p.x;
+		c.y = 2 * d_tmp.x * d_tmp.y + p.y;
 		i++;
 	}
 	return (i);
@@ -20,7 +41,9 @@ int	iterate_julia(t_d_xy *c, t_d_xy d_pos)
 int	iteration(t_fractol *fractol, t_d_xy d_pos)
 {
 	if (fractol->type == JULIA)
-		return (iterate_julia(&d_pos, fractol->coef));
+		return (iterate_julia(d_pos, fractol->coef));
+	if (fractol->type == MANDELBROT)
+		return (iterate_mandelbrot(d_pos));
 	return (0);
 }
 

@@ -1,9 +1,16 @@
 #include "fractol.h"
 
-int	close_mlx_win(int keycode, t_mlx *mlx)
+int	key_press(int keycode, t_mlx *mlx)
 {
 	if (keycode == 65307)
 		mlx_destroy_window(mlx->mlx, mlx->win);
+	return (0);
+}
+
+int	key_release(int keycode, t_mlx *mlx)
+{
+	(void)keycode;
+	(void)mlx;
 	return (0);
 }
 
