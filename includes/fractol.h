@@ -10,10 +10,22 @@
 # define JULIA 1
 # define MANDELBROT 2
 
-typedef struct		s_reso
+typedef struct		s_xy
 {
 	int		x;
 	int		y;
+}			t_xy;
+
+typedef struct		s_d_xy
+{
+	double		x;
+	double		y;
+}			t_d_xy;
+
+typedef struct		s_reso
+{
+	t_xy		xy;
+	t_d_xy		d_xy;
 }			t_reso;
 
 typedef	struct		s_mlx
