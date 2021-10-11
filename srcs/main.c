@@ -13,6 +13,8 @@ int		ft_parsing(t_fractol *fractol, int ac, char **av)
 		fractol->type = JULIA;
 	if (ft_strcmp_type(av[1], "mandelbrot") == 0)
 		fractol->type = MANDELBROT;
+	if (av[2])
+		fractol->coef = ft_atoi(av[2]);
 	return (0);
 }
 

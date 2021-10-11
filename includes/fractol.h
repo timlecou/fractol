@@ -47,5 +47,10 @@ int		print_error(char *str);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strcmp_type(char *s1, char *s2);
 int		ft_strlen(char *str);
+int		ft_atoi(char *str);
+
+//EXIT
+
+
 
 #endif

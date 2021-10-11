@@ -6,7 +6,7 @@
 /*   By: dkoriaki <dkoriaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:18:21 by dkoriaki          #+#    #+#             */
-/*   Updated: 2021/10/11 16:01:08 by dkoriaki         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:00:08 by dkoriaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,31 @@ int	ft_strcmp_type(char *s1, char *s2)
 	i = ft_strcmp(tmp, s2);
 	free(tmp);
 	return (i);
+}
+
+int	ft_atoi(char *str)
+{
+	int	i;
+	int	negativ;
+	int	nb;
+	int	count;
+
+	i = 0;
+	negativ = 0;
+	nb = 0;
+	count = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == ' '))
+		i++;
+	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			negativ++;
+		count++;
+		if (count > 1)
+			return (0);
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+		nb = nb * 10 + (str[i++] - 48);
+	return ((negativ != 0) ? -nb : nb);
 }
