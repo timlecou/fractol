@@ -3,7 +3,7 @@
 int		ft_parsing(t_fractol *fractol, int ac, char **av)
 {
 	if (ac < 2 || (ft_strcmp_type(av[1], "julia") != 0
-			&& ft_strcmp_type(av[1]), "mandelbrot"))
+			&& ft_strcmp_type(av[1], "mandelbrot") != 0))
 	{
 		print_error("Argument required\n");
 		print_error("Available commands are: ./fractol [julia/mandelbrot]\n");
@@ -22,33 +22,26 @@ int		main(int ac, char **av)
 
 	fractol = (t_fractol*)malloc(sizeof(t_fractol));
 	if (!fractol)
-		return (print_error("malloc failed\n", 1));
-	if (ft_parsing())
-	return(0);
-	/*fractol = 
-	if (ac < 2)
+		return (print_error("malloc failed\n"));
+	if (ft_parsing(fractol, ac, av) == 1)
 	{
-		printf("Argument required\n");
-		printf("Available commands are: ./fractol [julia/mandelbrot]\n");	
+		free(fractol);
 		return (1);
 	}
-	if (ft_strncmp(av[1], "julia", 5) != 0 && ft_strncmp(av[1], "mandelbrot", 10) != 0)
-	{
-		printf("Invalid argument: %s\n", av[1]);
-		printf("Available commands are: ./fractol [julia/mandelbrot]\n");	
-		return (1);
-	}*/
-	/*
+	printf("fractol->type = %d", fractol->type);
+	//free(fractol);
+	//return(0);
+	
 	fractol->mlx = (t_mlx*)malloc(sizeof(t_mlx));
 	if (!fractol->mlx)
-		return (print_error("malloc failed\n", 1));
+		return (print_error("malloc failed\n"));
 	fractol->res = (t_reso*)malloc(sizeof(t_reso));
 	if (!fractol->res)
-		return (print_error("malloc failed\n", 1));
+		return (print_error("malloc failed\n"));
 	if (launch_program(fractol))
-		return (print_error("an error has occured when runnig the program\n", 1));
+		return (print_error("an error has occured when runnig the program\n"));
 	free(fractol->res);
 	free(fractol->mlx);
 	free(fractol);
-	return (0);*/
+	return (0);
 }

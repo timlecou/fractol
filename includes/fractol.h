@@ -3,7 +3,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include "../libft/libft.h"
 # include "../mlx_linux/mlx.h"
 
 # define JULIA 1
@@ -42,7 +41,7 @@ int		new_window(t_mlx *mlx, t_reso *res);
 int		launch_program(t_fractol *fractol);
 
 //ERROR
-int		print_error(char *str, int code);
+int		print_error(char *str);
 
 //UTILS
 int		ft_strcmp(char *s1, char *s2);

@@ -6,7 +6,7 @@
 /*   By: dkoriaki <dkoriaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:18:21 by dkoriaki          #+#    #+#             */
-/*   Updated: 2021/10/11 15:37:33 by dkoriaki         ###   ########.fr       */
+/*   Updated: 2021/10/11 16:01:08 by dkoriaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,21 @@ int	ft_strcmp_type(char *s1, char *s2)
 	char	*tmp;
 	int		i;
 
+	i = 0;
 	len = ft_strlen(s1);
 	tmp = (char *)malloc(sizeof(char) * (len + 1));
 	if (!tmp)
 		return (-1);
-	while (str[i])
+	while (s1[i])
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			tmp[i] = str[i] + 32;
+		if (s1[i] >= 'A' && s1[i] <= 'Z')
+			tmp[i] = s1[i] + 32;
 		else
-			tmp[i] = str[i];
+			tmp[i] = s1[i];
+		i++;
 	}
-	tmp[i] = '\0'
+	tmp[i] = '\0';
 	i = ft_strcmp(tmp, s2);
+	free(tmp);
 	return (i);
 }

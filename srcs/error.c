@@ -1,8 +1,14 @@
 #include "fractol.h"
 
-int	print_error(char *str, int code)
+int	print_error(char *str)
 {
-	ft_putstr_fd("Error: ", 2);
-	ft_putstr_fd(str, 2);
-	return (code);
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(2, &str[i], 1);
+		i++;
+	}
+	return (1);
 }
