@@ -5,6 +5,8 @@
 # include <unistd.h>
 # include "../mlx_linux/mlx.h"
 
+# define COEF_A 0.285
+# define COEF_B 0.013
 # define JULIA 1
 # define MANDELBROT 2
 

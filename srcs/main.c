@@ -15,6 +15,8 @@ int		ft_parsing(t_fractol *fractol, int ac, char **av)
 		fractol->type = MANDELBROT;
 	if (av[2])
 		fractol->coef = ft_atoi(av[2]);
+	else
+		fractol->coef = 
 	return (0);
 }
 
