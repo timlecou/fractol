@@ -1,6 +1,6 @@
 #include "fractol.h"
 
-int		ft_parsing(t_fractol *fractol, int ac, char **av)
+int		ft_parsing(int ac, char **av)
 {
 	if (ac < 2 || (ft_strcmp_type(av[1], "julia") != 0
 			&& ft_strcmp_type(av[1], "mandelbrot") != 0))
@@ -9,10 +9,6 @@ int		ft_parsing(t_fractol *fractol, int ac, char **av)
 		print_error("Available commands are: ./fractol [julia/mandelbrot]\n");
 		return (1);
 	}
-	if (ft_strcmp_type(av[1], "julia") == 0)
-		fractol->type = JULIA;
-	if (ft_strcmp_type(av[1], "mandelbrot") == 0)
-		fractol->type = MANDELBROT;
 	return (0);
 }
 
@@ -20,26 +16,21 @@ int		main(int ac, char **av)
 {
 	t_fractol	*fractol;
 
+	if (ft_parsing(ac, av) == 1)
+		return (1);
 	fractol = (t_fractol*)malloc(sizeof(t_fractol));
 	if (!fractol)
 		return (print_error("malloc failed\n"));
-	if (ft_parsing(fractol, ac, av) == 1)
-	{
-		free(fractol);
-		return (1);
-	}
+	if (ft_strcmp_type(av[1], "julia") == 0)
+		fractol->type = JULIA;
+	if (ft_strcmp_type(av[1], "mandelbrot") == 0)
+		fractol->type = MANDELBROT;
 	printf("fractol->type = %d", fractol->type);
-	//free(fractol);
-	//return(0);
-	
-	fractol->mlx = (t_mlx*)malloc(sizeof(t_mlx));
-	if (!fractol->mlx)
-		return (print_error("malloc failed\n"));
-	fractol->res = (t_reso*)malloc(sizeof(t_reso));
-	if (!fractol->res)
-		return (print_error("malloc failed\n"));
 	if (launch_program(fractol))
 		return (print_error("an error has occured when runnig the program\n"));
+
+
+	//FREE
 	free(fractol->res);
 	free(fractol->mlx);
 	free(fractol);

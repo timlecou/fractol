@@ -36,6 +36,7 @@ typedef	struct		s_mlx
 	int		*data;
 	int		bpp;
 	int		endian;
+	int		size_l;
 }			t_mlx;
 
 typedef struct		s_fractol
@@ -49,7 +50,7 @@ typedef struct		s_fractol
 //MLX
 void		init_mlx(t_mlx *mlx);
 int		get_resolution(t_mlx *mlx, t_reso *res);
-int		new_window(t_mlx *mlx, t_reso *res);
+int		ft_init(t_fractol *fractol);
 
 //LAUNCH
 int		launch_program(t_fractol *fractol);
