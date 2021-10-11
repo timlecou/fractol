@@ -20,7 +20,7 @@ int	get_resolution(t_mlx *mlx, t_reso *res)
 	res->x = 0;
 	res->y = 0;
 	if (!mlx_get_screen_size(mlx->mlx, &res->x, &res->y))
-		return (print_error("failed to get screen size\n", 1));
+		return (print_error("failed to get screen size\n"));
 	if (res->y > 600)
 		res->y = 600;
 	if (res->x > 900)
