@@ -3,7 +3,10 @@
 int	key_press(int keycode, t_mlx *mlx)
 {
 	if (keycode == 65307)
+	{
 		mlx_destroy_window(mlx->mlx, mlx->win);
+		exit(0);
+	}
 	return (0);
 }
 
@@ -11,6 +14,21 @@ int	key_release(int keycode, t_mlx *mlx)
 {
 	(void)keycode;
 	(void)mlx;
+	return (0);
+}
+
+int	button_press(int keycode, int x, int y, t_fractol *fractol)
+{
+	(void)x;
+	(void)y;
+	if (keycode == 4 || keycode == 5)
+	{
+		if (keycode == 4)
+			fractol->zoom += 1 * (fractol->zoom / 9);
+		else if (keycode == 5)
+			fractol->zoom -= 1 * (fractol->zoom / 9);
+		draw_fractal(fractol);
+	}
 	return (0);
 }
 

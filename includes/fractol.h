@@ -57,6 +57,7 @@ int		get_resolution(t_mlx *mlx, t_reso *res);
 int		ft_init(t_fractol *fractol);
 int		key_press(int keycode, t_mlx *mlx);
 int		key_release(int keycode, t_mlx *mlx);
+int		button_press(int keycode, int x, int y, t_fractol *fractol);
 
 //LAUNCH
 int		launch_program(t_fractol *fractol);

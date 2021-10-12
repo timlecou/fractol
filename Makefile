@@ -23,7 +23,7 @@ LFLAGS = -Lmlx_linux -lmlx -L$(INCLIB) -lXext -lX11 -lm -lbsd
 all: $(NAME)
 
 $(NAME): minilib $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(LFLAGS) -g3 -fsanitize=address
+	$(CC) -o $(NAME) $(OBJ) $(LFLAGS) #-g3 -fsanitize=address
 
 minilib:
 		cd mlx_linux ; ./configure ; cd ..

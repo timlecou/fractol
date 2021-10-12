@@ -57,7 +57,6 @@ int	set_color(int it, int color)
 	if (it == MAX_ITERATION)
 		return (0);
 	ret = (it * (1 + color * 2) | it * (3 + color / 3) << 8 | it * (7 + color) << 16);
-	//printf("[%d]\n", ret);
 	return (ret);
 }
 
@@ -69,7 +68,6 @@ void	draw_pixel(t_fractol *fractol, t_xy pos)
 		/ (0.5 * fractol->zoom * fractol->res->d_xy.x);
 	d_pos.y = ((double)pos.y - fractol->res->xy.y / 2)
 		/ (0.5 * fractol->zoom * fractol->res->xy.y);
-	//printf("(%f)(%f)\n", d_pos.x, d_pos.y);
 	fractol->mlx->data[pos.y * fractol->res->xy.x + pos.x] = 
 		set_color(iteration(fractol, d_pos), fractol->color);
 }
@@ -89,5 +87,6 @@ void	draw_fractal(t_fractol *fractol)
 		}
 		pos.x++;
 	}
+	printf("%d %d %d", (!fractol->mlx->mlx), (!fractol->mlx->win), (!fractol->mlx->img));
 	mlx_put_image_to_window(fractol->mlx->mlx, fractol->mlx->win, fractol->mlx->img, 0, 0);
 }
