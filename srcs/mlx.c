@@ -27,6 +27,7 @@ int	button_press(int keycode, int x, int y, t_fractol *fractol)
 			fractol->zoom += 1 * (fractol->zoom / 9);
 		else if (keycode == 5)
 			fractol->zoom -= 1 * (fractol->zoom / 9);
+		mlx_destroy_image(fractol->mlx->mlx, fractol->mlx->img);
 		draw_fractal(fractol);
 	}
 	return (0);

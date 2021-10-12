@@ -87,6 +87,6 @@ void	draw_fractal(t_fractol *fractol)
 		}
 		pos.x++;
 	}
-	printf("%d %d %d", (!fractol->mlx->mlx), (!fractol->mlx->win), (!fractol->mlx->img));
+	write(1, "OK2\n", 4);
 	mlx_put_image_to_window(fractol->mlx->mlx, fractol->mlx->win, fractol->mlx->img, 0, 0);
 }
